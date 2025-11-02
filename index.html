@@ -16,7 +16,7 @@
       font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
-      background: #f4f7fc;
+      background-color: #c1ff72; /* Yeni arka plan rengi */
       color: #333;
     }
 
@@ -41,25 +41,30 @@
 
     .menu {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
     }
 
     .menu a {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       text-decoration: none;
-      padding: 12px 25px;
+      padding: 15px 30px;
       font-size: 18px;
       color: #fff;
       background-color: #3498db;
       border-radius: 30px;
-      transition: background-color 0.3s ease;
+      width: 200px;
+      height: 50px;
+      text-align: center;
+      transition: transform 0.3s ease, background-color 0.3s ease;
     }
 
     .menu a:hover {
       background-color: #2980b9;
+      transform: translateY(-5px); /* Buton hareketi */
     }
 
     .menu i {
@@ -96,11 +101,15 @@
       border-radius: 25px;
       font-size: 18px;
       text-decoration: none;
-      transition: background-color 0.3s ease;
+      width: 200px;
+      height: 50px;
+      text-align: center;
+      transition: transform 0.3s ease, background-color 0.3s ease;
     }
 
     .whatsapp-button:hover {
       background-color: #128C7E;
+      transform: translateY(-5px); /* Buton hareketi */
     }
 
     /* Yaprak Efekti */
