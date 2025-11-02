@@ -6,127 +6,160 @@
   <title>Ahenk</title>
 
   <!-- Google Fonts for modern typography -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-  <!-- FontAwesome CDN for icons -->
+  <!-- FontAwesome for icons -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" />
 
   <style>
     /* Global Styles */
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f1f5f8;
-      color: #2f2f2f;
-      line-height: 1.6;
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      color: #fff;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    h1, p {
-      margin: 0;
-    }
-
-    /* Container for all elements */
     .container {
+      width: 100%;
       max-width: 1200px;
-      margin: 0 auto;
-      padding: 40px;
+      padding: 50px;
       text-align: center;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 20px;
+      box-shadow: 0 4px 40px rgba(0, 0, 0, 0.6);
     }
 
     /* Logo Styling */
     .logo {
       max-width: 150px;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
+      animation: logoAnimation 2s ease-in-out;
+    }
+
+    /* Animation for Logo */
+    @keyframes logoAnimation {
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
 
     /* Heading */
     h1 {
       font-size: 36px;
-      color: #34495e;
-      margin-bottom: 20px;
+      margin-bottom: 40px;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      animation: fadeIn 2s ease-in-out;
     }
 
-    /* Menu and Button Styles */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    /* Menu Buttons */
     .menu {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
     }
 
     .menu a {
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 18px 30px;
-      background-color: #3498db;
+      padding: 20px 40px;
+      background-color: #ff007f;
       color: #fff;
       font-size: 18px;
       font-weight: 500;
       border-radius: 50px;
       text-decoration: none;
-      transition: transform 0.3s ease, background-color 0.3s ease;
+      transition: transform 0.3s ease, background-color 0.4s ease;
+      position: relative;
+      overflow: hidden;
     }
 
     .menu a:hover {
-      background-color: #2980b9;
+      background-color: #d50062;
       transform: translateY(-5px);
     }
 
     .menu i {
-      margin-right: 10px;
+      margin-right: 15px;
     }
 
-    /* Mobile responsive adjustments */
-    @media (max-width: 768px) {
-      .menu a {
-        font-size: 16px;
-        padding: 12px 20px;
-      }
+    /* Hover Animation */
+    .menu a::after {
+      content: '';
+      position: absolute;
+      background: #fff;
+      height: 300%;
+      width: 300%;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      animation: hoverEffect 0.4s linear;
+    }
 
-      h1 {
-        font-size: 28px;
-      }
-
-      .container {
-        padding: 20px;
+    @keyframes hoverEffect {
+      100% {
+        transform: translate(-50%, -50%) scale(1);
       }
     }
 
-    /* Footer Styling */
+    /* Footer */
     .footer {
-      margin-top: 60px;
+      margin-top: 40px;
       font-size: 14px;
-      color: #aaa;
+      color: #ccc;
       text-align: center;
     }
 
-    /* WhatsApp Button Styling */
+    /* WhatsApp Button */
     .whatsapp-button {
       display: inline-flex;
-      align-items: center;
       justify-content: center;
-      padding: 12px 30px;
+      align-items: center;
+      padding: 15px 30px;
       background-color: #25D366;
+      border-radius: 25px;
       color: white;
       font-size: 16px;
-      border-radius: 25px;
       text-decoration: none;
-      margin-top: 20px;
       transition: transform 0.3s ease, background-color 0.3s ease;
+      margin-top: 30px;
     }
 
     .whatsapp-button:hover {
       background-color: #128C7E;
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
 
-    /* Leaf Animation */
+    /* Animations for Leaf Effect */
     .leaf {
       position: absolute;
       font-size: 20px;
-      animation: leafFall 10s linear infinite;
+      animation: leafFall 8s linear infinite;
     }
 
     @keyframes leafFall {
@@ -140,6 +173,21 @@
       }
     }
 
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .menu a {
+        font-size: 16px;
+        padding: 15px 25px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .container {
+        padding: 30px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -205,4 +253,3 @@
 
 </body>
 </html>
-
