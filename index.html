@@ -1,167 +1,12 @@
 <!DOCTYPE html>
 <html lang="tr">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ahenk - İletişim</title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" />
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #1e3c72, #2a5298); /* Gece mavisi */
-      color: white;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 600px;
-      padding: 40px;
-      text-align: center;
-      background: rgba(0, 0, 0, 0.8);
-      border-radius: 25px;
-      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(10px);
-    }
-
-    .logo {
-      max-width: 160px;
-      margin-bottom: 40px;
-      transition: transform 0.3s ease;
-    }
-
-    .logo:hover {
-      transform: scale(1.1);
-    }
-
-    h1 {
-      font-size: 36px;
-      color: #fff;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-weight: bold;
-    }
-
-    .menu {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .menu a {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  padding: 14px 25px; /* Buton boyutları küçültüldü */
-  background-color: #ff007f;
-  color: white;
-  font-size: 16px; /* Daha küçük font boyutu */
-  font-weight: 500;
-  border-radius: 10px; /* Köşeler daha köşeli yapıldı */
-  text-decoration: none;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  width: 100%;
-  text-align: center;
-  position: relative;
-}
-
-.whatsapp-button {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  padding: 12px 25px; /* Buton boyutları küçültüldü */
-  background-color: #25D366;
-  border-radius: 10px; /* Köşeler daha köşeli yapıldı */
-  color: white;
-  font-size: 14px; /* Daha küçük font boyutu */
-  text-decoration: none;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  margin-top: 30px;
-  width: 100%;
-  text-align: center;
-}
-
-    }
-
-    .menu a:hover {
-      background-color: #d50062;
-      transform: translateY(-5px);
-    }
-
-    .menu i {
-      margin-right: 15px;
-    }
-
-    .whatsapp-button {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      padding: 15px 30px;
-      background-color: #25D366;
-      border-radius: 25px;
-      color: white;
-      font-size: 16px;
-      text-decoration: none;
-      transition: transform 0.3s ease, background-color 0.3s ease;
-      margin-top: 30px;
-      width: 100%;
-      text-align: center;
-    }
-
-    .whatsapp-button:hover {
-      background-color: #128C7E;
-      transform: scale(1.1);
-    }
-
-    .footer {
-      margin-top: 30px;
-      font-size: 14px;
-      color: #ccc;
-      text-align: center;
-    }
-
-    /* Yaprak Efekti */
-    .leaf {
-      position: absolute;
-      font-size: 20px;
-      animation: leafFall 8s linear infinite;
-    }
-
-    @keyframes leafFall {
-      0% {
-        transform: translateY(-100px);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(100vh);
-        opacity: 0;
-      }
-    }
-
-    /* Responsive Tasarım */
-    @media (max-width: 768px) {
-      .menu a {
-        font-size: 16px;
-        padding: 15px 25px;
-      }
-
-      h1 {
-        font-size: 28px;
-      }
-
-      .container {
-        padding: 30px;
-      }
-    }
-  </style>
+  <title>Ahenk</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
 </head>
 <body>
 
@@ -173,27 +18,34 @@
       <a href="https://www.instagram.com/ahenk.yp/" target="_blank">
         <i class="fab fa-instagram"></i> Instagram
       </a>
-      <a href="https://maps.app.goo.gl/dhRcbs7B16iDeBPk7" target="_blank">
-        <i class="fas fa-map-marker-alt"></i> Mağazamız
-      </a>
-      <a href="https://g.page/r/CWujqsdxiXonEBM/review" target="_blank">
-        <i class="fas fa-star"></i> Bizi Puanla
-      </a>
+
+       <a href="https://maps.app.goo.gl/dhRcbs7B16iDeBPk7" target="_blank" class="adres-button">
+  <i class="fas fa-map-marker-alt"></i> Mağazamız
+</a>
+
+      <a href="https://g.page/r/CWujqsdxiXonEBM/review" target="_blank" class="yorum-button">
+  <i class="fas fa-star"></i> Bizi Puanla
+</a>
+
+
       <a href="https://drive.google.com/file/d/19xB-MsFeX3DLN12RCIs7FPUHUXF6aOGX/view?usp=sharing" target="_blank" download="ahenk-katalogu.pdf">
-        📗 AHENK Katalog
-      </a>
+  📗 AHENK
+</a>
+
       <a href="https://drive.google.com/file/d/1mnNEqhvC-R8IS9Hh9HDOdxB2ug520j4_/view?usp=sharing" target="_blank" download="ahenk-donat-katalogu.pdf">
-        📘 DONAT Katalog
+  📘 DONAT
+</a>
+
+
+      <!-- WhatsApp Bağlantıları -->
+      <a id="whatsappLink1" class="whatsapp-button">
+        ✆ Whatsapp - 1
+      </a>
+
+      <a id="whatsappLink2" class="whatsapp-button">
+        ✆ Whatsapp - 2
       </a>
     </div>
-
-    <a href="https://api.whatsapp.com/send?phone=905550411997&text=Merhaba,%20ürünleriniz%20hakkında%20bilgi%20almak%20istiyorum." class="whatsapp-button" target="_blank">
-      <i class="fab fa-whatsapp"></i> Whatsapp - 1
-    </a>
-
-    <a href="https://api.whatsapp.com/send?phone=905453516016&text=Merhaba,%20ürünleriniz%20hakkında%20bilgi%20almak%20istiyorum." class="whatsapp-button" target="_blank">
-      <i class="fab fa-whatsapp"></i> Whatsapp - 2
-    </a>
 
     <div class="footer">
       © 2025 Ahenk. Tüm hakları saklıdır.
@@ -201,12 +53,33 @@
   </div>
 
   <script>
+    // WhatsApp yönlendirmesi – mobil uyumlu ve %100 çalışan yapı
+    const isAndroid = /Android/i.test(navigator.userAgent);
+    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    function createWhatsAppLink(phone, message) {
+      if (isIOS) {
+        return `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
+      } else if (isAndroid) {
+        return `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
+      } else {
+        return `https://web.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
+      }
+    }
+
+    document.getElementById("whatsappLink1").setAttribute("href", createWhatsAppLink("905550411997", "Merhaba, ürünleriniz hakkında bilgi almak istiyorum."));
+    document.getElementById("whatsappLink2").setAttribute("href", createWhatsAppLink("905453516016", "Merhaba, ürünleriniz hakkında bilgi almak istiyorum."));
+    document.getElementById("whatsappLink1").setAttribute("target", "_blank");
+    document.getElementById("whatsappLink2").setAttribute("target", "_blank");
+    document.getElementById("whatsappLink1").setAttribute("rel", "noopener noreferrer");
+    document.getElementById("whatsappLink2").setAttribute("rel", "noopener noreferrer");
+
     // Yaprak efekti (sonbahar)
     function createLeaf() {
       const leaf = document.createElement('div');
       leaf.classList.add('leaf');
 
-      const leaves = ['🍂', '🍁', '🌿', '🍃'];
+      const leaves = ['🍂', '🍁', '🌿', '🍁', '🍃', '🍂'];
       leaf.textContent = leaves[Math.floor(Math.random() * leaves.length)];
 
       leaf.style.left = Math.random() * 100 + 'vw';
@@ -226,3 +99,4 @@
 
 </body>
 </html>
+
