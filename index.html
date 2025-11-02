@@ -88,22 +88,6 @@
       transform: scale(1.05);
     }
 
-    /* Yaprak efekti için stil */
-    .leaf {
-      position: absolute;
-      font-size: 20px;
-      animation: fall linear infinite;
-    }
-
-    @keyframes fall {
-      0% {
-        transform: translateY(-100px);
-      }
-      100% {
-        transform: translateY(100vh);
-      }
-    }
-
     /* Footer stili */
     .footer {
       text-align: center;
@@ -177,27 +161,6 @@
     document.getElementById("whatsappLink1").setAttribute("rel", "noopener noreferrer");
     document.getElementById("whatsappLink2").setAttribute("rel", "noopener noreferrer");
 
-    // Yaprak efekti (sonbahar)
-    function createLeaf() {
-      const leaf = document.createElement('div');
-      leaf.classList.add('leaf');
-
-      const leaves = ['🍂', '🍁', '🌿', '🍁', '🍃', '🍂'];
-      leaf.textContent = leaves[Math.floor(Math.random() * leaves.length)];
-
-      leaf.style.left = Math.random() * 100 + 'vw';
-      leaf.style.fontSize = (Math.random() * 15 + 15) + 'px';
-      const duration = Math.random() * 4 + 4;
-      leaf.style.animationDuration = duration + 's';
-
-      document.body.appendChild(leaf);
-
-      setTimeout(() => {
-        leaf.remove();
-      }, duration * 1000);
-    }
-
-    setInterval(createLeaf, 300);
   </script>
 
 </body>
