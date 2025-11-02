@@ -1,102 +1,163 @@
 <!DOCTYPE html>
 <html lang="tr">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ahenk</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
-</head>
-<body>
-
-  <div class="container">
-    <img src="https://i.hizliresim.com/ar1wgl8.png" alt="Ahenk Logo" class="logo" />
-    <h1>Bize Ulaşın</h1>
-
-    <div class="menu">
-      <a href="https://www.instagram.com/ahenk.yp/" target="_blank">
-        <i class="fab fa-instagram"></i> Instagram
-      </a>
-
-       <a href="https://maps.app.goo.gl/dhRcbs7B16iDeBPk7" target="_blank" class="adres-button">
-  <i class="fas fa-map-marker-alt"></i> Mağazamız
-</a>
-
-      <a href="https://g.page/r/CWujqsdxiXonEBM/review" target="_blank" class="yorum-button">
-  <i class="fas fa-star"></i> Bizi Puanla
-</a>
-
-
-      <a href="https://drive.google.com/file/d/19xB-MsFeX3DLN12RCIs7FPUHUXF6aOGX/view?usp=sharing" target="_blank" download="ahenk-katalogu.pdf">
-  📗 AHENK
-</a>
-
-      <a href="https://drive.google.com/file/d/1mnNEqhvC-R8IS9Hh9HDOdxB2ug520j4_/view?usp=sharing" target="_blank" download="ahenk-donat-katalogu.pdf">
-  📘 DONAT
-</a>
-
-
-      <!-- WhatsApp Bağlantıları -->
-      <a id="whatsappLink1" class="whatsapp-button">
-        ✆ Whatsapp - 1
-      </a>
-
-      <a id="whatsappLink2" class="whatsapp-button">
-        ✆ Whatsapp - 2
-      </a>
-    </div>
-
-    <div class="footer">
-      © 2025 Ahenk. Tüm hakları saklıdır.
-    </div>
-  </div>
-
-  <script>
-    // WhatsApp yönlendirmesi – mobil uyumlu ve %100 çalışan yapı
-    const isAndroid = /Android/i.test(navigator.userAgent);
-    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-    function createWhatsAppLink(phone, message) {
-      if (isIOS) {
-        return `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
-      } else if (isAndroid) {
-        return `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
-      } else {
-        return `https://web.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Ahenk</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f7f7f7;
+        color: #333;
       }
-    }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+      }
+      .logo {
+        width: 150px;
+        margin-bottom: 20px;
+      }
+      h1 {
+        font-size: 32px;
+        color: #222;
+        margin-bottom: 30px;
+        font-weight: 600;
+      }
+      .menu a {
+        display: inline-block;
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        margin: 10px;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s, transform 0.3s;
+        font-weight: 500;
+      }
+      .menu a:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+      }
+      .whatsapp-button {
+        background-color: #25d366;
+        margin: 10px;
+      }
+      .whatsapp-button:hover {
+        background-color: #128c7e;
+      }
+      .footer {
+        font-size: 14px;
+        color: #888;
+        margin-top: 40px;
+      }
+      .leaf {
+        position: absolute;
+        animation: fall 5s infinite;
+        font-size: 20px;
+      }
+      @keyframes fall {
+        0% { transform: translateY(-100px); opacity: 1; }
+        100% { transform: translateY(100vh); opacity: 0; }
+      }
+      @media (max-width: 768px) {
+        .menu a {
+          width: 100%;
+          padding: 15px;
+          margin: 5px 0;
+        }
+        h1 {
+          font-size: 28px;
+        }
+      }
+    </style>
+  </head>
+  <body>
 
-    document.getElementById("whatsappLink1").setAttribute("href", createWhatsAppLink("905550411997", "Merhaba, ürünleriniz hakkında bilgi almak istiyorum."));
-    document.getElementById("whatsappLink2").setAttribute("href", createWhatsAppLink("905453516016", "Merhaba, ürünleriniz hakkında bilgi almak istiyorum."));
-    document.getElementById("whatsappLink1").setAttribute("target", "_blank");
-    document.getElementById("whatsappLink2").setAttribute("target", "_blank");
-    document.getElementById("whatsappLink1").setAttribute("rel", "noopener noreferrer");
-    document.getElementById("whatsappLink2").setAttribute("rel", "noopener noreferrer");
+    <div class="container">
+      <img src="https://i.hizliresim.com/ar1wgl8.png" alt="Ahenk Logo" class="logo" />
+      <h1>Bize Ulaşın</h1>
 
-    // Yaprak efekti (sonbahar)
-    function createLeaf() {
-      const leaf = document.createElement('div');
-      leaf.classList.add('leaf');
+      <div class="menu">
+        <a href="https://www.instagram.com/ahenk.yp/" target="_blank">
+          <i class="fab fa-instagram"></i> Instagram
+        </a>
 
-      const leaves = ['🍂', '🍁', '🌿', '🍁', '🍃', '🍂'];
-      leaf.textContent = leaves[Math.floor(Math.random() * leaves.length)];
+        <a href="https://maps.app.goo.gl/dhRcbs7B16iDeBPk7" target="_blank" class="adres-button">
+          <i class="fas fa-map-marker-alt"></i> Mağazamız
+        </a>
 
-      leaf.style.left = Math.random() * 100 + 'vw';
-      leaf.style.fontSize = (Math.random() * 15 + 15) + 'px';
-      const duration = Math.random() * 4 + 4;
-      leaf.style.animationDuration = duration + 's';
+        <a href="https://g.page/r/CWujqsdxiXonEBM/review" target="_blank" class="yorum-button">
+          <i class="fas fa-star"></i> Bizi Puanla
+        </a>
 
-      document.body.appendChild(leaf);
+        <a href="https://drive.google.com/file/d/19xB-MsFeX3DLN12RCIs7FPUHUXF6aOGX/view?usp=sharing" target="_blank" download="ahenk-katalogu.pdf">
+          📗 AHENK Katalogu
+        </a>
 
-      setTimeout(() => {
-        leaf.remove();
-      }, duration * 1000);
-    }
+        <a href="https://drive.google.com/file/d/1mnNEqhvC-R8IS9Hh9HDOdxB2ug520j4_/view?usp=sharing" target="_blank" download="ahenk-donat-katalogu.pdf">
+          📘 DONAT Katalogu
+        </a>
 
-    setInterval(createLeaf, 300);
-  </script>
+        <!-- WhatsApp Bağlantıları -->
+        <a id="whatsappLink1" class="whatsapp-button">
+          ✆ Whatsapp - 1
+        </a>
 
-</body>
+        <a id="whatsappLink2" class="whatsapp-button">
+          ✆ Whatsapp - 2
+        </a>
+      </div>
+
+      <div class="footer">
+        © 2025 Ahenk. Tüm hakları saklıdır.
+      </div>
+    </div>
+
+    <script>
+      const isAndroid = /Android/i.test(navigator.userAgent);
+      const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+      function createWhatsAppLink(phone, message) {
+        if (isIOS) {
+          return `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
+        } else if (isAndroid) {
+          return `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
+        } else {
+          return `https://web.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
+        }
+      }
+
+      document.getElementById("whatsappLink1").setAttribute("href", createWhatsAppLink("905550411997", "Merhaba, ürünleriniz hakkında bilgi almak istiyorum."));
+      document.getElementById("whatsappLink2").setAttribute("href", createWhatsAppLink("905453516016", "Merhaba, ürünleriniz hakkında bilgi almak istiyorum."));
+      document.getElementById("whatsappLink1").setAttribute("target", "_blank");
+      document.getElementById("whatsappLink2").setAttribute("target", "_blank");
+      document.getElementById("whatsappLink1").setAttribute("rel", "noopener noreferrer");
+      document.getElementById("whatsappLink2").setAttribute("rel", "noopener noreferrer");
+
+      function createLeaf() {
+        const leaf = document.createElement('div');
+        leaf.classList.add('leaf');
+        const leaves = ['🍂', '🍁', '🌿', '🍁', '🍃', '🍂'];
+        leaf.textContent = leaves[Math.floor(Math.random() * leaves.length)];
+        leaf.style.left = Math.random() * 100 + 'vw';
+        leaf.style.fontSize = (Math.random() * 15 + 15) + 'px';
+        const duration = Math.random() * 4 + 4;
+        leaf.style.animationDuration = duration + 's';
+        document.body.appendChild(leaf);
+        setTimeout(() => {
+          leaf.remove();
+        }, duration * 1000);
+      }
+
+      setInterval(createLeaf, 300);
+    </script>
+
+  </body>
 </html>
-
