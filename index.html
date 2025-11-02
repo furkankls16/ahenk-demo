@@ -1,12 +1,126 @@
 <!DOCTYPE html>
 <html lang="tr">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ahenk</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
+  
+  <!-- FontAwesome CDN -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f7fc;
+      color: #333;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .logo {
+      max-width: 150px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 36px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .menu a {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      padding: 12px 25px;
+      font-size: 18px;
+      color: #fff;
+      background-color: #3498db;
+      border-radius: 30px;
+      transition: background-color 0.3s ease;
+    }
+
+    .menu a:hover {
+      background-color: #2980b9;
+    }
+
+    .menu i {
+      margin-right: 8px;
+    }
+
+    .adres-button {
+      background-color: #2ecc71;
+    }
+
+    .adres-button:hover {
+      background-color: #27ae60;
+    }
+
+    .yorum-button {
+      background-color: #f39c12;
+    }
+
+    .yorum-button:hover {
+      background-color: #e67e22;
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    /* WhatsApp Button */
+    .whatsapp-button {
+      background-color: #25D366;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 25px;
+      font-size: 18px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .whatsapp-button:hover {
+      background-color: #128C7E;
+    }
+
+    /* Yaprak Efekti */
+    .leaf {
+      position: absolute;
+      font-size: 20px;
+      animation: leafFall 10s linear infinite;
+    }
+
+    @keyframes leafFall {
+      0% {
+        transform: translateY(-100px);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -19,23 +133,21 @@
         <i class="fab fa-instagram"></i> Instagram
       </a>
 
-       <a href="https://maps.app.goo.gl/dhRcbs7B16iDeBPk7" target="_blank" class="adres-button">
-  <i class="fas fa-map-marker-alt"></i> Mağazamız
-</a>
+      <a href="https://maps.app.goo.gl/dhRcbs7B16iDeBPk7" target="_blank" class="adres-button">
+        <i class="fas fa-map-marker-alt"></i> Mağazamız
+      </a>
 
       <a href="https://g.page/r/CWujqsdxiXonEBM/review" target="_blank" class="yorum-button">
-  <i class="fas fa-star"></i> Bizi Puanla
-</a>
-
+        <i class="fas fa-star"></i> Bizi Puanla
+      </a>
 
       <a href="https://drive.google.com/file/d/19xB-MsFeX3DLN12RCIs7FPUHUXF6aOGX/view?usp=sharing" target="_blank" download="ahenk-katalogu.pdf">
-  📗 AHENK
-</a>
+        📗 AHENK
+      </a>
 
       <a href="https://drive.google.com/file/d/1mnNEqhvC-R8IS9Hh9HDOdxB2ug520j4_/view?usp=sharing" target="_blank" download="ahenk-donat-katalogu.pdf">
-  📘 DONAT
-</a>
-
+        📘 DONAT
+      </a>
 
       <!-- WhatsApp Bağlantıları -->
       <a id="whatsappLink1" class="whatsapp-button">
@@ -99,4 +211,3 @@
 
 </body>
 </html>
-
