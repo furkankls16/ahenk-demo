@@ -11,14 +11,21 @@
         font-family: 'Poppins', sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #f0f4f8;
+        background-color: #c1ff72; /* Yeni arka plan rengi */
         color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
       }
       .container {
-        max-width: 1200px;
+        max-width: 800px;
         margin: 0 auto;
         padding: 20px;
         text-align: center;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       }
       .logo {
         width: 150px;
@@ -34,8 +41,8 @@
         display: inline-block;
         background-color: #007bff;
         color: #fff;
-        padding: 12px 25px;
-        margin: 10px;
+        padding: 8px 16px; /* Butonları küçültme */
+        margin: 8px;
         text-decoration: none;
         border-radius: 5px;
         transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
@@ -59,23 +66,22 @@
         color: #888;
         margin-top: 40px;
       }
-      .leaf {
-        position: absolute;
-        animation: fall 5s infinite;
-        font-size: 25px;
-      }
-      @keyframes fall {
-        0% { transform: translateY(-100px); opacity: 1; }
-        100% { transform: translateY(100vh); opacity: 0; }
-      }
+
+      /* Mobil uyumlu düzenlemeler */
       @media (max-width: 768px) {
+        .container {
+          padding: 15px;
+        }
         .menu a {
           width: 100%;
-          padding: 15px;
+          padding: 12px;
           margin: 5px 0;
         }
         h1 {
           font-size: 28px;
+        }
+        .logo {
+          width: 120px;
         }
       }
     </style>
@@ -142,23 +148,6 @@
       document.getElementById("whatsappLink2").setAttribute("target", "_blank");
       document.getElementById("whatsappLink1").setAttribute("rel", "noopener noreferrer");
       document.getElementById("whatsappLink2").setAttribute("rel", "noopener noreferrer");
-
-      function createLeaf() {
-        const leaf = document.createElement('div');
-        leaf.classList.add('leaf');
-        const leaves = ['🍂', '🍁', '🌿', '🍁', '🍃', '🍂'];
-        leaf.textContent = leaves[Math.floor(Math.random() * leaves.length)];
-        leaf.style.left = Math.random() * 100 + 'vw';
-        leaf.style.fontSize = (Math.random() * 15 + 15) + 'px';
-        const duration = Math.random() * 4 + 4;
-        leaf.style.animationDuration = duration + 's';
-        document.body.appendChild(leaf);
-        setTimeout(() => {
-          leaf.remove();
-        }, duration * 1000);
-      }
-
-      setInterval(createLeaf, 300);
     </script>
 
   </body>
