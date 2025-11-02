@@ -1,154 +1,178 @@
 <!DOCTYPE html>
 <html lang="tr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Ahenk</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-      body {
-        font-family: 'Poppins', sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #c1ff72; /* Yeni arka plan rengi */
-        color: #333;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      }
-      .container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-        text-align: center;
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
-      .logo {
-        width: 150px;
-        margin-bottom: 20px;
-      }
-      h1 {
-        font-size: 32px;
-        color: #222;
-        margin-bottom: 30px;
-        font-weight: 600;
-      }
-      .menu a {
-        display: inline-block;
-        background-color: #007bff;
-        color: #fff;
-        padding: 8px 16px; /* Butonları küçültme */
-        margin: 8px;
-        text-decoration: none;
-        border-radius: 5px;
-        transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-        font-weight: 500;
-      }
-      .menu a:hover {
-        background-color: #0056b3;
-        transform: scale(1.05);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      }
-      .whatsapp-button {
-        background-color: #25d366;
-        margin: 10px;
-      }
-      .whatsapp-button:hover {
-        background-color: #128c7e;
-        transform: scale(1.05);
-      }
-      .footer {
-        font-size: 14px;
-        color: #888;
-        margin-top: 40px;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ahenk</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
+  <style>
+    /* Genel stil ayarları */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+      color: #333;
+    }
 
-      /* Mobil uyumlu düzenlemeler */
-      @media (max-width: 768px) {
-        .container {
-          padding: 15px;
-        }
-        .menu a {
-          width: 100%;
-          padding: 12px;
-          margin: 5px 0;
-        }
-        h1 {
-          font-size: 28px;
-        }
-        .logo {
-          width: 120px;
-        }
+    /* Menü tasarımı */
+    .menu {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+      padding: 20px;
+    }
+
+    .menu a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #fff;
+      font-size: 18px;
+      padding: 15px 30px;
+      margin: 10px;
+      background-color: #333;
+      border-radius: 8px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      width: 100%;
+      max-width: 300px;
+      text-align: center;
+    }
+
+    .menu a i {
+      margin-right: 10px;
+    }
+
+    /* Hover efekti: buton rengi değişikliği ve büyüme */
+    .menu a:hover {
+      background-color: #ff4081; /* Kontrast renk değişikliği */
+      transform: scale(1.1); /* Buton büyümesi */
+    }
+
+    /* WhatsApp butonları */
+    .whatsapp-button {
+      display: block;
+      margin-top: 20px;
+      padding: 15px 30px;
+      background-color: #25d366;
+      color: white;
+      font-size: 18px;
+      border-radius: 8px;
+      text-align: center;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.2s ease;
+    }
+
+    .whatsapp-button:hover {
+      background-color: #128c7e; /* WhatsApp yeşili */
+      transform: scale(1.05);
+    }
+
+    /* Yaprak efekti için stil */
+    .leaf {
+      position: absolute;
+      font-size: 20px;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px);
       }
-    </style>
-  </head>
-  <body>
+      100% {
+        transform: translateY(100vh);
+      }
+    }
+  </style>
+</head>
+<body>
 
-    <div class="container">
-      <img src="https://i.hizliresim.com/ar1wgl8.png" alt="Ahenk Logo" class="logo" />
-      <h1>Bize Ulaşın</h1>
+  <div class="container">
+    <img src="https://i.hizliresim.com/ar1wgl8.png" alt="Ahenk Logo" class="logo" />
+    <h1>Bize Ulaşın</h1>
 
-      <div class="menu">
-        <a href="https://www.instagram.com/ahenk.yp/" target="_blank">
-          <i class="fab fa-instagram"></i> Instagram
-        </a>
+    <div class="menu">
+      <a href="https://www.instagram.com/ahenk.yp/" target="_blank">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
 
-        <a href="https://maps.app.goo.gl/dhRcbs7B16iDeBPk7" target="_blank" class="adres-button">
-          <i class="fas fa-map-marker-alt"></i> Mağazamız
-        </a>
+      <a href="https://maps.app.goo.gl/dhRcbs7B16iDeBPk7" target="_blank" class="adres-button">
+        <i class="fas fa-map-marker-alt"></i> Mağazamız
+      </a>
 
-        <a href="https://g.page/r/CWujqsdxiXonEBM/review" target="_blank" class="yorum-button">
-          <i class="fas fa-star"></i> Bizi Puanla
-        </a>
+      <a href="https://g.page/r/CWujqsdxiXonEBM/review" target="_blank" class="yorum-button">
+        <i class="fas fa-star"></i> Bizi Puanla
+      </a>
 
-        <a href="https://drive.google.com/file/d/19xB-MsFeX3DLN12RCIs7FPUHUXF6aOGX/view?usp=sharing" target="_blank" download="ahenk-katalogu.pdf">
-          📗 AHENK Katalogu
-        </a>
+      <a href="https://drive.google.com/file/d/19xB-MsFeX3DLN12RCIs7FPUHUXF6aOGX/view?usp=sharing" target="_blank" download="ahenk-katalogu.pdf">
+        📗 AHENK
+      </a>
 
-        <a href="https://drive.google.com/file/d/1mnNEqhvC-R8IS9Hh9HDOdxB2ug520j4_/view?usp=sharing" target="_blank" download="ahenk-donat-katalogu.pdf">
-          📘 DONAT Katalogu
-        </a>
+      <a href="https://drive.google.com/file/d/1mnNEqhvC-R8IS9Hh9HDOdxB2ug520j4_/view?usp=sharing" target="_blank" download="ahenk-donat-katalogu.pdf">
+        📘 DONAT
+      </a>
 
-        <!-- WhatsApp Bağlantıları -->
-        <a id="whatsappLink1" class="whatsapp-button">
-          ✆ Whatsapp - 1
-        </a>
+      <!-- WhatsApp Bağlantıları -->
+      <a id="whatsappLink1" class="whatsapp-button">
+        ✆ Whatsapp - 1
+      </a>
 
-        <a id="whatsappLink2" class="whatsapp-button">
-          ✆ Whatsapp - 2
-        </a>
-      </div>
-
-      <div class="footer">
-        © 2025 Ahenk. Tüm hakları saklıdır.
-      </div>
+      <a id="whatsappLink2" class="whatsapp-button">
+        ✆ Whatsapp - 2
+      </a>
     </div>
 
-    <script>
-      const isAndroid = /Android/i.test(navigator.userAgent);
-      const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    <div class="footer">
+      © 2025 Ahenk. Tüm hakları saklıdır.
+    </div>
+  </div>
 
-      function createWhatsAppLink(phone, message) {
-        if (isIOS) {
-          return `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
-        } else if (isAndroid) {
-          return `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
-        } else {
-          return `https://web.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
-        }
+  <script>
+    // WhatsApp yönlendirmesi – mobil uyumlu ve %100 çalışan yapı
+    const isAndroid = /Android/i.test(navigator.userAgent);
+    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    function createWhatsAppLink(phone, message) {
+      if (isIOS) {
+        return `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
+      } else if (isAndroid) {
+        return `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
+      } else {
+        return `https://web.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
       }
+    }
 
-      document.getElementById("whatsappLink1").setAttribute("href", createWhatsAppLink("905550411997", "Merhaba, ürünleriniz hakkında bilgi almak istiyorum."));
-      document.getElementById("whatsappLink2").setAttribute("href", createWhatsAppLink("905453516016", "Merhaba, ürünleriniz hakkında bilgi almak istiyorum."));
-      document.getElementById("whatsappLink1").setAttribute("target", "_blank");
-      document.getElementById("whatsappLink2").setAttribute("target", "_blank");
-      document.getElementById("whatsappLink1").setAttribute("rel", "noopener noreferrer");
-      document.getElementById("whatsappLink2").setAttribute("rel", "noopener noreferrer");
-    </script>
+    document.getElementById("whatsappLink1").setAttribute("href", createWhatsAppLink("905550411997", "Merhaba, ürünleriniz hakkında bilgi almak istiyorum."));
+    document.getElementById("whatsappLink2").setAttribute("href", createWhatsAppLink("905453516016", "Merhaba, ürünleriniz hakkında bilgi almak istiyorum."));
+    document.getElementById("whatsappLink1").setAttribute("target", "_blank");
+    document.getElementById("whatsappLink2").setAttribute("target", "_blank");
+    document.getElementById("whatsappLink1").setAttribute("rel", "noopener noreferrer");
+    document.getElementById("whatsappLink2").setAttribute("rel", "noopener noreferrer");
 
-  </body>
+    // Yaprak efekti (sonbahar)
+    function createLeaf() {
+      const leaf = document.createElement('div');
+      leaf.classList.add('leaf');
+
+      const leaves = ['🍂', '🍁', '🌿', '🍁', '🍃', '🍂'];
+      leaf.textContent = leaves[Math.floor(Math.random() * leaves.length)];
+
+      leaf.style.left = Math.random() * 100 + 'vw';
+      leaf.style.fontSize = (Math.random() * 15 + 15) + 'px';
+      const duration = Math.random() * 4 + 4;
+      leaf.style.animationDuration = duration + 's';
+
+      document.body.appendChild(leaf);
+
+      setTimeout(() => {
+        leaf.remove();
+      }, duration * 1000);
+    }
+
+    setInterval(createLeaf, 300);
+  </script>
+
+</body>
 </html>
