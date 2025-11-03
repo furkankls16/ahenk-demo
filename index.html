@@ -1,138 +1,16 @@
 <!DOCTYPE html>
 <html lang="tr">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ahenk</title>
+  <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
   <style>
-    /* Genel stil ayarları */
-    body {
-      font-family: 'Poppins', sans-serif;
-      font-weight: bold; /* Yazı tipini bold yap */
-      margin: 0;
-      padding: 0;
-      background-color: #c1ff72; /* Arka plan rengi */
-      color: #333;
-      overflow-x: hidden;
-    }
-
-    /* Container ve Logo */
-    .container {
-      text-align: center;
-      margin-top: 50px;
-      padding: 0 10px;
-    }
-
-    .logo {
-      width: 150px;
-      margin-bottom: 20px;
-      max-width: 100%;
-      height: auto;
-    }
-
-    h1 {
-      color: #333;
-      font-size: 24px;
-      margin: 20px 0;
-    }
-
-    /* Menü tasarımı */
-    .menu {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 50px;
-      padding: 0 10px;
-      width: 100%;
-    }
-
-    .menu a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      color: #fff;
-      font-size: 18px;
-      padding: 15px 30px;
-      margin: 10px;
-      background-color: #2f2f2f; /* Koyu gri renk */
-      border-radius: 8px;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      width: 100%;
-      max-width: 300px;
-      text-align: center;
-    }
-
-    .menu a i {
-      margin-right: 10px;
-    }
-
-    /* Hover efekti: buton rengi değişikliği ve büyüme */
-    .menu a:hover {
-      background-color: #34495e; /* Koyu mavi tonunda renk değişikliği */
-      transform: scale(1.1); /* Buton büyümesi */
-    }
-
-    /* WhatsApp butonları */
-    .whatsapp-button {
-      display: block;
-      margin-top: 20px;
-      padding: 15px 30px;
-      background-color: #25d366;
-      color: white;
-      font-size: 18px;
-      border-radius: 8px;
-      text-align: center;
-      text-decoration: none;
-      transition: background-color 0.3s, transform 0.2s ease;
-    }
-
-    .whatsapp-button:hover {
-      background-color: #128c7e; /* WhatsApp yeşili */
-      transform: scale(1.05);
-    }
-
-    /* Footer stili */
-    .footer {
-      text-align: center;
-      margin-top: 50px;
-      font-size: 14px;
-      color: #777;
-      padding: 10px;
-    }
-
-    /* Responsive Tasarım - Mobil Uyumluluk */
-    @media only screen and (max-width: 600px) {
-      .logo {
-        width: 120px;
-      }
-
-      h1 {
-        font-size: 20px;
-      }
-
-      .menu a {
-        font-size: 16px;
-        padding: 12px 25px;
-        max-width: 100%; /* Mobil cihazda ekranın tamamını kaplama */
-      }
-
-      .footer {
-        font-size: 12px;
-      }
-    }
-
-    @media only screen and (max-width: 400px) {
-      .menu a {
-        font-size: 14px;
-        padding: 10px 20px;
-        max-width: 100%; /* Mobil cihazda ekranın tamamını kaplama */
-      }
-
-      .footer {
-        font-size: 10px;
-      }
+    /* Butonların yazı tipini bold yapmak için stil */
+    a {
+      font-weight: bold;
     }
   </style>
 </head>
@@ -147,21 +25,23 @@
         <i class="fab fa-instagram"></i> Instagram
       </a>
 
-      <a href="https://maps.app.goo.gl/dhRcbs7B16iDeBPk7" target="_blank" class="adres-button">
-        <i class="fas fa-map-marker-alt"></i> Mağazamız
-      </a>
+       <a href="https://maps.app.goo.gl/dhRcbs7B16iDeBPk7" target="_blank" class="adres-button">
+  <i class="fas fa-map-marker-alt"></i> Mağazamız
+</a>
 
       <a href="https://g.page/r/CWujqsdxiXonEBM/review" target="_blank" class="yorum-button">
-        <i class="fas fa-star"></i> Bizi Puanla
-      </a>
+  <i class="fas fa-star"></i> Bizi Puanla
+</a>
+
 
       <a href="https://drive.google.com/file/d/19xB-MsFeX3DLN12RCIs7FPUHUXF6aOGX/view?usp=sharing" target="_blank" download="ahenk-katalogu.pdf">
-        ・ AHENK ・
-      </a>
+  📗 AHENK
+</a>
 
       <a href="https://drive.google.com/file/d/1mnNEqhvC-R8IS9Hh9HDOdxB2ug520j4_/view?usp=sharing" target="_blank" download="ahenk-donat-katalogu.pdf">
-        ・ DONAT ・
-      </a>
+  📘 DONAT
+</a>
+
 
       <!-- WhatsApp Bağlantıları -->
       <a id="whatsappLink1" class="whatsapp-button">
@@ -200,6 +80,10 @@
     document.getElementById("whatsappLink1").setAttribute("rel", "noopener noreferrer");
     document.getElementById("whatsappLink2").setAttribute("rel", "noopener noreferrer");
 
+    
+    }
+
+    setInterval(createLeaf, 300);
   </script>
 
 </body>
