@@ -4,9 +4,11 @@
   box-sizing:border-box;
 }
 
-html, body{
-  overflow-x:hidden;
+html,body{
+  height:100%;
+  overflow-x:hidden;   /* ✅ taşma engellendi */
 }
+
 body{
   display:flex;
   align-items:center;
@@ -16,71 +18,77 @@ body{
   perspective:1800px;
 }
 
-/* 🌈 Sahne Arka Planı */
+/* Arka plan */
 .background-layer{
   position:fixed;
-  inset:-10%;
+  inset:-8%;
   background:
-    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.35), transparent 60%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.3), transparent 60%),
     linear-gradient(135deg,#d8ff9a,#c3ff6f,#aeea55);
   z-index:-1;
-  will-change:transform;
-}
-
-.scene{
-  transform-style:preserve-3d;
-}
-
-.card-wrapper{
-  transform-style:preserve-3d;
-  will-change:transform;
   transition:transform 0.15s ease-out;
+  will-change:transform;
 }
 
+/* Sabit container */
 .container{
   width:92vw;
   max-width:850px;
   padding:35px 25px;
-  border-radius:28px;
+  border-radius:26px;
   background:rgba(255,255,255,0.45);
   backdrop-filter:blur(10px);
   text-align:center;
   box-shadow:
-    0 80px 140px rgba(0,0,0,0.35),
-    0 40px 80px rgba(0,0,0,0.25);
+    0 50px 100px rgba(0,0,0,0.25);
 }
 
-.logo-wrapper{
-  margin-bottom:20px;
+/* İç sahne katmanı */
+.inner-scene{
   transform-style:preserve-3d;
   transition:transform 0.15s ease-out;
+  will-change:transform;
 }
 
-/* Menü Kartları */
+/* Logo */
+.logo-wrapper{
+  margin-bottom:20px;
+}
+
+.logo-wrapper svg{
+  width:220px;
+  max-width:85%;
+  height:auto;
+  display:block;
+  margin:0 auto;
+}
+
+/* ✅ Başlık yukarı alındı */
+h1{
+  margin:30px 0 35px 0;
+}
+
+/* Menü */
 .menu{
   display:grid;
-  gap:16px;
+  gap:14px;
+  margin-top:10px;
 }
 
 .menu a{
-  padding:16px;
-  border-radius:16px;
+  padding:15px;
+  border-radius:15px;
   text-decoration:none;
   font-weight:bold;
   color:#111;
-  background:rgba(255,255,255,0.75);
+  background:rgba(255,255,255,0.8);
   transition:all 0.25s ease;
-  box-shadow:0 20px 40px rgba(0,0,0,0.25);
+  box-shadow:0 15px 30px rgba(0,0,0,0.2);
 }
 
 .menu a:hover{
-  transform:translateY(-6px);
-  box-shadow:0 35px 80px rgba(0,0,0,0.35);
-}
-
-.menu a:hover{
-  transform:translateZ(80px);
-  box-shadow:0 35px 80px rgba(0,0,0,0.35);
+  transform:translateY(-5px);
+  box-shadow:0 25px 50px rgba(0,0,0,0.3);
 }
 
 .footer{
@@ -91,6 +99,10 @@ body{
 /* Mobil */
 @media (max-width:768px){
   .container{
-    transform:scale(0.95);
+    transform:scale(0.96);
+  }
+
+  .logo-wrapper svg{
+    width:180px;
   }
 }
