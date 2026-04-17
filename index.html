@@ -23,32 +23,26 @@ body{
   overflow-x:hidden;
 }
 
-/* ✅ Marka rengine sadık gradient */
+/* ✅ Marka renkli gradient */
 .background-layer{
   position:fixed;
   inset:-10%;
-  background:linear-gradient(
-    135deg,
-    #d8ff9a,
-    #c3ff6f,
-    #aeea55
-  );
+  background:linear-gradient(135deg,#d8ff9a,#c3ff6f,#aeea55);
   background-size:140% 140%;
   z-index:-1;
   transition:transform 0.15s ease-out;
 }
 
-/* 3D sahne */
+/* Sahne */
 .scene{
   width:100%;
   display:flex;
   align-items:center;
   justify-content:center;
   transform-style:preserve-3d;
-  transition:transform 0.15s ease-out;
 }
 
-/* ✅ Responsive container */
+/* Ana panel */
 .container{
   width:92%;
   max-width:900px;
@@ -61,17 +55,16 @@ body{
   box-shadow:
     0 30px 60px rgba(0,0,0,0.25),
     0 15px 30px rgba(0,0,0,0.15);
+  transition:transform 0.15s ease-out;
 }
 
 .logo{
   width:140px;
   margin-bottom:20px;
-  transform:translateZ(60px);
 }
 
 h1{
   margin-bottom:30px;
-  transform:translateZ(50px);
 }
 
 .menu{
@@ -87,20 +80,36 @@ h1{
   font-weight:bold;
   color:#111;
   background:rgba(255,255,255,0.5);
-  transform:translateZ(45px);
   transition:all 0.2s ease;
   box-shadow:0 10px 20px rgba(0,0,0,0.15);
 }
 
 .menu a:hover{
-  transform:translateZ(55px);
+  transform:translateY(-2px);
   box-shadow:0 15px 30px rgba(0,0,0,0.25);
 }
 
 .footer{
   margin-top:25px;
   font-size:14px;
-  transform:translateZ(30px);
+}
+
+/* ✅ Mobil optimizasyon */
+@media (max-width:768px){
+
+  .container{
+    padding:30px 20px;
+    transform:translateZ(40px) scale(0.96);
+  }
+
+  .logo{
+    width:110px;
+  }
+
+  h1{
+    font-size:20px;
+  }
+
 }
 </style>
 </head>
@@ -108,8 +117,8 @@ h1{
 
 <div class="background-layer"></div>
 
-<div class="scene" id="scene">
-  <div class="container">
+<div class="scene">
+  <div class="container" id="card">
     <img src="https://i.hizliresim.com/ar1wgl8.png" class="logo" />
     <h1>Bize Ulaşın</h1>
 
@@ -130,7 +139,7 @@ h1{
 </div>
 
 <script>
-const scene = document.getElementById("scene");
+const card = document.getElementById("card");
 const background = document.querySelector(".background-layer");
 
 let targetX = 0;
@@ -138,12 +147,16 @@ let targetY = 0;
 let currentX = 0;
 let currentY = 0;
 
-function updatePosition(x,y){
-  const centerX = window.innerWidth/2;
-  const centerY = window.innerHeight/2;
+const isMobile = window.innerWidth <= 768;
+const maxRotate = isMobile ? 2 : 3; // ✅ Mobilde daha düşük
 
-  targetX = (x-centerX)/centerX;
-  targetY = (y-centerY)/centerY;
+function updatePosition(x,y){
+  const rect = card.getBoundingClientRect();
+  const centerX = rect.left + rect.width/2;
+  const centerY = rect.top + rect.height/2;
+
+  targetX = (x-centerX)/rect.width;
+  targetY = (y-centerY)/rect.height;
 }
 
 document.addEventListener("mousemove",e=>{
@@ -156,20 +169,22 @@ document.addEventListener("touchmove",e=>{
 },{passive:true});
 
 function animate(){
-  currentX += (targetX-currentX)*0.07;
-  currentY += (targetY-currentY)*0.07;
+  currentX += (targetX-currentX)*0.08;
+  currentY += (targetY-currentY)*0.08;
 
-  const rotateX = currentY*3; 
-  const rotateY = currentX*-3;
+  const rotateX = currentY * maxRotate;
+  const rotateY = currentX * -maxRotate;
 
-  scene.style.transform = `
+  card.style.transform = `
+    translateZ(40px)
+    ${isMobile ? "scale(0.96)" : ""}
     rotateX(${rotateX}deg)
     rotateY(${rotateY}deg)
   `;
 
   background.style.transform = `
-    translateX(${currentX*-20}px)
-    translateY(${currentY*-20}px)
+    translateX(${currentX*-15}px)
+    translateY(${currentY*-15}px)
   `;
 
   requestAnimationFrame(animate);
