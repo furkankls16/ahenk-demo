@@ -72,38 +72,74 @@ document.addEventListener("touchmove",e=>{
   }
 },{passive:true});
 
+const scene = document.getElementById("innerScene");
+const bg = document.getElementById("bg");
+const buttons = document.querySelectorAll(".menu a");
+const logoWrapper = document.querySelector(".logo-wrapper");
+
+let targetX=0,targetY=0,currentX=0,currentY=0;
+
+const isMobile = window.innerWidth <= 768;
+
+function update(x,y){
+  const cx = window.innerWidth/2;
+  const cy = window.innerHeight/2;
+
+  const px = (x-cx)/cx;
+  const py = (y-cy)/cy;
+
+  targetX = isMobile ? 0 : px;
+  targetY = py;
+}
+
+document.addEventListener("mousemove",e=>{
+  if(!isMobile) update(e.clientX,e.clientY);
+});
+
+document.addEventListener("touchmove",e=>{
+  if(isMobile){
+    const t=e.touches[0];
+    update(t.clientX,t.clientY);
+  }
+},{passive:true});
+
 function animate(){
 
   currentX += (targetX-currentX)*0.1;
   currentY += (targetY-currentY)*0.1;
 
-  const rotX = currentY*8;
+  /* ✅ Mobil daha güçlü tilt */
+  const maxTilt = isMobile ? 11 : 8;
+
+  const rotX = currentY*maxTilt;
   const rotY = currentX*-8;
 
-  /* ✅ Sahne tilt */
   scene.style.transform =
     `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
 
-  /* ✅ Daha güçlü arka plan parallax */
   bg.style.transform =
     `translateY(${currentY*-45}px)
      translateX(${currentX*-35}px)
      scale(1.05)`;
 
-  /* ✅ Dinamik ışık efekti */
-  const lightX = 50 + currentX*30;
-  const lightY = 50 + currentY*30;
+  /* ✅ Logo highlight hareketi */
+  const highlightPos = 50 + currentX*60;
+  logoWrapper.style.setProperty(
+    "--highlight-pos",
+    highlightPos+"%"
+  );
 
-  document.querySelector(".container").style.background =
-    `radial-gradient(circle at ${lightX}% ${lightY}%,
-     rgba(255,255,255,0.6),
-     rgba(255,255,255,0.35) 40%)`;
+  logoWrapper.querySelector("::after");
 
-  /* ✅ Butonlara yönlü shadow */
-  buttons.forEach(btn=>{
-    btn.style.boxShadow =
-      `${-currentX*20}px ${20 + currentY*20}px 40px rgba(0,0,0,0.25)`;
-  });
+  logoWrapper.style.setProperty(
+    "--shine-x",
+    highlightPos+"%"
+  );
+
+  logoWrapper.style.setProperty(
+    "--shine-y",
+    50 + currentY*40+"%"
+  );
 
   requestAnimationFrame(animate);
 }
