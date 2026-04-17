@@ -18,7 +18,7 @@ body{
   perspective:2200px;
 }
 
-/* ✅ Gradient */
+/* ✅ Marka Gradient */
 .background-layer{
   position:fixed;
   inset:-5%;
@@ -27,7 +27,7 @@ body{
   transition:transform 0.1s ease-out;
 }
 
-/* 3D sahne */
+/* 3D Sahne */
 .scene{
   display:flex;
   align-items:center;
@@ -54,19 +54,19 @@ body{
   transform-origin:center center;
 }
 
-/* ✅ 3D Logo */
+/* ✅ Logo - Orijinal Oran Korundu */
 .logo-3d{
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:14px;
+  gap:6px;
   margin-bottom:25px;
   transform-style:preserve-3d;
 }
 
 .logo-symbol{
-  width:75px;
-  transform:translateZ(90px);
+  width:70px;
+  transform:translateZ(60px);
   transition:transform 0.1s ease-out;
 }
 
@@ -76,10 +76,10 @@ body{
 }
 
 .logo-text{
-  font-size:30px;
+  font-size:28px;
   font-weight:700;
-  letter-spacing:1px;
-  transform:translateZ(60px);
+  letter-spacing:0.5px;
+  transform:translateZ(55px);
   transition:transform 0.1s ease-out;
 }
 
