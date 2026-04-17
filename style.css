@@ -120,6 +120,11 @@ h1{
   margin-top:20px;
   font-size:14px;
 }
+@media (min-width:769px){
+  .menu a{
+    transform:translateZ(0); /* GPU stabilize */
+  }
+}
 
 /* ✅ Mobil */
 @media (max-width:768px){
