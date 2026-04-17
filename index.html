@@ -1,108 +1,180 @@
 <!DOCTYPE html>
 <html lang="tr">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ahenk</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
-  <style>
-    /* Butonların yazı tipini bold yapmak için stil */
-    a {
-      font-weight: bold;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ahenk 3D</title>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:Arial, sans-serif;
+  overflow:hidden;
+  perspective:1200px;
+  background:#111;
+  transition:background-position 0.2s ease-out;
+}
+
+/* Gradient arka plan */
+.background-layer{
+  position:fixed;
+  width:120%;
+  height:120%;
+  top:-10%;
+  left:-10%;
+  background:linear-gradient(135deg,#1a1a1a,#2c3e50,#4b0082);
+  background-size:200% 200%;
+  z-index:-1;
+  transition:transform 0.2s ease-out;
+}
+
+/* 3D sahne */
+.scene{
+  transform-style:preserve-3d;
+  transition:transform 0.2s ease-out;
+}
+
+/* Ana panel */
+.container{
+  width:90%;
+  max-width:420px;
+  padding:30px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(10px);
+  text-align:center;
+  transform:translateZ(40px);
+  box-shadow:
+    0 25px 50px rgba(0,0,0,0.4),
+    0 10px 20px rgba(0,0,0,0.3);
+}
+
+.logo{
+  width:120px;
+  margin-bottom:20px;
+  transform:translateZ(60px);
+}
+
+h1{
+  color:#fff;
+  margin-bottom:25px;
+  transform:translateZ(50px);
+}
+
+.menu a{
+  display:block;
+  margin:12px 0;
+  padding:12px;
+  border-radius:12px;
+  text-decoration:none;
+  color:#fff;
+  font-weight:bold;
+  background:rgba(255,255,255,0.08);
+  transform:translateZ(45px);
+  transition:all 0.2s ease;
+  box-shadow:0 8px 15px rgba(0,0,0,0.3);
+}
+
+.menu a:hover{
+  transform:translateZ(55px);
+  box-shadow:0 12px 25px rgba(0,0,0,0.4);
+}
+
+.footer{
+  margin-top:20px;
+  font-size:13px;
+  color:#ccc;
+  transform:translateZ(30px);
+}
+</style>
 </head>
 <body>
 
+<div class="background-layer"></div>
+
+<div class="scene" id="scene">
   <div class="container">
-    <img src="https://i.hizliresim.com/ar1wgl8.png" alt="Ahenk Logo" class="logo" />
+    <img src="https://i.hizliresim.com/ar1wgl8.png" class="logo" />
     <h1>Bize Ulaşın</h1>
 
     <div class="menu">
-      <a href="https://www.instagram.com/ahenk.yp/" target="_blank">
-        <i class="fab fa-instagram"></i> Instagram
-      </a>
-
-       <a href="https://maps.app.goo.gl/dhRcbs7B16iDeBPk7" target="_blank" class="adres-button">
-  <i class="fas fa-map-marker-alt"></i> Mağazamız
-</a>
-
-      <a href="https://g.page/r/CWujqsdxiXonEBM/review" target="_blank" class="yorum-button">
-  <i class="fas fa-star"></i> Bizi Puanla
-</a>
-
-
-      <a href="https://drive.google.com/file/d/19xB-MsFeX3DLN12RCIs7FPUHUXF6aOGX/view?usp=sharing" target="_blank" download="ahenk-katalogu.pdf">
-   AHENK
-</a>
-
-      <a href="https://drive.google.com/file/d/1mrPoPy7eB6u9ffBgnHZhib9jj8H54mfQ/view?usp=sharing" target="_blank" download="ahenk-donat-katalogu.pdf">
-   DONAT
-</a>
-
-
-      <!-- WhatsApp Bağlantıları -->
-      <a id="whatsappLink1" class="whatsapp-button">
-        ✆ Whatsapp ➀
-      </a>
-
-      <a id="whatsappLink2" class="whatsapp-button">
-        ✆ Whatsapp ➁
-      </a>
+      <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+      <a href="#"><i class="fas fa-map-marker-alt"></i> Mağazamız</a>
+      <a href="#"><i class="fas fa-star"></i> Bizi Puanla</a>
+      <a href="#">AHENK</a>
+      <a href="#">DONAT</a>
+      <a href="#">✆ Whatsapp ➀</a>
+      <a href="#">✆ Whatsapp ➁</a>
     </div>
 
     <div class="footer">
-      © 2025 Ahenk. Tüm hakları saklıdır.
+      © 2025 Ahenk
     </div>
   </div>
+</div>
 
-  <script>
-    // WhatsApp yönlendirmesi – mobil uyumlu ve %100 çalışan yapı
-    const isAndroid = /Android/i.test(navigator.userAgent);
-    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+<script>
+const scene = document.getElementById("scene");
+const background = document.querySelector(".background-layer");
 
-    function createWhatsAppLink(phone, message) {
-      if (isIOS) {
-        return `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
-      } else if (isAndroid) {
-        return `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
-      } else {
-        return `https://web.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
-      }
-    }
+let targetX = 0;
+let targetY = 0;
+let currentX = 0;
+let currentY = 0;
 
-    document.getElementById("whatsappLink1").setAttribute("href", createWhatsAppLink("905550411997", "Merhaba, ürünleriniz hakkında bilgi almak istiyorum."));
-    document.getElementById("whatsappLink2").setAttribute("href", createWhatsAppLink("905453516016", "Merhaba, ürünleriniz hakkında bilgi almak istiyorum."));
-    document.getElementById("whatsappLink1").setAttribute("target", "_blank");
-    document.getElementById("whatsappLink2").setAttribute("target", "_blank");
-    document.getElementById("whatsappLink1").setAttribute("rel", "noopener noreferrer");
-    document.getElementById("whatsappLink2").setAttribute("rel", "noopener noreferrer");
+/* Hareket algılama */
+function handleMove(x,y){
+  const centerX = window.innerWidth / 2;
+  const centerY = window.innerHeight / 2;
 
-    // Yaprak efekti (sonbahar)
-    function createLeaf() {
-      const leaf = document.createElement('div');
-      leaf.classList.add('leaf');
+  targetX = (x - centerX) / centerX;
+  targetY = (y - centerY) / centerY;
+}
 
-      const leaves = ['❄', '❄', '❄', '❄', '❄', '❄'];
-      leaf.textContent = leaves[Math.floor(Math.random() * leaves.length)];
+/* Mouse */
+document.addEventListener("mousemove", e=>{
+  handleMove(e.clientX,e.clientY);
+});
 
-      leaf.style.left = Math.random() * 100 + 'vw';
-      leaf.style.fontSize = (Math.random() * 15 + 15) + 'px';
-      const duration = Math.random() * 4 + 4;
-      leaf.style.animationDuration = duration + 's';
+/* Touch */
+document.addEventListener("touchmove", e=>{
+  const touch = e.touches[0];
+  handleMove(touch.clientX,touch.clientY);
+});
 
-      document.body.appendChild(leaf);
+/* Yumuşak animasyon */
+function animate(){
+  currentX += (targetX - currentX) * 0.08;
+  currentY += (targetY - currentY) * 0.08;
 
-      setTimeout(() => {
-        leaf.remove();
-      }, duration * 1000);
-    }
+  const rotateX = currentY * 4;   // max 4 derece
+  const rotateY = currentX * -4;
 
-    setInterval(createLeaf, 300);
-  </script>
+  scene.style.transform = `
+    rotateX(${rotateX}deg)
+    rotateY(${rotateY}deg)
+  `;
+
+  background.style.transform = `
+    translateX(${currentX * -30}px)
+    translateY(${currentY * -30}px)
+  `;
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+</script>
 
 </body>
 </html>
-
