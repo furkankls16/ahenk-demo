@@ -94,23 +94,22 @@ h1{
 
   transition:
     transform 0.25s cubic-bezier(.2,.6,.2,1),
-    box-shadow 0.25s cubic-bezier(.2,.6,.2,1),
-    background 0.25s ease;
+    box-shadow 0.25s cubic-bezier(.2,.6,.2,1);
 
   will-change:transform;
 }
 
+/* ✅ Stabil Hover */
 .menu a:hover{
   transform:translateY(-5px);
-
   box-shadow:
     0 20px 40px rgba(0,0,0,0.22),
     inset 0 1px 0 rgba(255,255,255,0.9);
 }
 
+/* ✅ Mobil Press */
 .menu a:active{
   transform:translateY(-2px) scale(0.98);
-
   box-shadow:
     0 8px 18px rgba(0,0,0,0.18),
     inset 0 2px 4px rgba(0,0,0,0.15);
@@ -119,11 +118,6 @@ h1{
 .footer{
   margin-top:20px;
   font-size:14px;
-}
-@media (min-width:769px){
-  .menu a{
-    transform:translateZ(0); /* GPU stabilize */
-  }
 }
 
 /* ✅ Mobil */
