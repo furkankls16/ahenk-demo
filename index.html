@@ -20,11 +20,11 @@ body{
   justify-content:center;
   font-family:Arial, sans-serif;
   background:#c3ff6f;
-  perspective:1500px;
+  perspective:1800px; /* ✅ Daha güçlü derinlik */
   overflow:hidden;
 }
 
-/* Marka tonlu gradient */
+/* Marka gradient */
 .background-layer{
   position:fixed;
   inset:-5%;
@@ -46,7 +46,6 @@ body{
   align-items:center;
   justify-content:center;
   transform-style:preserve-3d;
-  transition:transform 0.12s ease-out;
 }
 
 .container{
@@ -58,8 +57,9 @@ body{
   backdrop-filter:blur(6px);
   text-align:center;
   box-shadow:
-    0 35px 70px rgba(0,0,0,0.25),
-    0 20px 40px rgba(0,0,0,0.15);
+    0 45px 80px rgba(0,0,0,0.25),
+    0 25px 45px rgba(0,0,0,0.18);
+  transform-origin:center center;
 }
 
 .logo{
@@ -138,20 +138,22 @@ h1{
 const wrapper = document.getElementById("wrapper");
 const background = document.querySelector(".background-layer");
 
-let currentX=0,currentY=0,targetX=0,targetY=0;
+let currentY=0,targetY=0;
+let currentX=0,targetX=0;
 
 const isMobile = window.innerWidth <= 768;
-const maxRotate = 4; // ✅ Eski güçlü his geri geldi
+const maxRotateDesktop = 6;   // ✅ Daha hissedilir
+const maxRotateMobile  = 6;   // ✅ Mobilde de güçlü
 
 function update(x,y){
   const centerX = window.innerWidth/2;
   const centerY = window.innerHeight/2;
 
-  let percentX = (x-centerX)/centerX;
-  let percentY = (y-centerY)/centerY;
+  const percentX = (x-centerX)/centerX;
+  const percentY = (y-centerY)/centerY;
 
   if(isMobile){
-    targetX = 0;               // ✅ Mobilde sağ-sol kapalı
+    targetX = 0;          // ✅ SAĞ-SOL TAM KAPALI
     targetY = percentY;
   } else {
     targetX = percentX;
@@ -173,11 +175,11 @@ document.addEventListener("touchmove",e=>{
 },{passive:true});
 
 function animate(){
-  currentX += (targetX-currentX)*0.08;
-  currentY += (targetY-currentY)*0.08;
+  currentX += (targetX-currentX)*0.1;
+  currentY += (targetY-currentY)*0.1;
 
-  const rotateX = currentY*maxRotate;
-  const rotateY = currentX*-maxRotate;
+  const rotateX = currentY*(isMobile?maxRotateMobile:maxRotateDesktop);
+  const rotateY = isMobile ? 0 : currentX*-maxRotateDesktop;
 
   wrapper.style.transform = `
     rotateX(${rotateX}deg)
@@ -185,7 +187,7 @@ function animate(){
   `;
 
   background.style.transform = `
-    translateY(${currentY*-12}px)
+    translateY(${currentY*-18}px)
   `;
 
   requestAnimationFrame(animate);
