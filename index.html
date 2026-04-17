@@ -44,6 +44,7 @@
 <script>
 const scene = document.getElementById("innerScene");
 const bg = document.getElementById("bg");
+const buttons = document.querySelectorAll(".menu a");
 
 let targetX=0,targetY=0,currentX=0,currentY=0;
 
@@ -73,17 +74,36 @@ document.addEventListener("touchmove",e=>{
 
 function animate(){
 
-  currentX += (targetX-currentX)*0.08;
-  currentY += (targetY-currentY)*0.08;
+  currentX += (targetX-currentX)*0.1;
+  currentY += (targetY-currentY)*0.1;
 
   const rotX = currentY*8;
   const rotY = currentX*-8;
 
+  /* ✅ Sahne tilt */
   scene.style.transform =
     `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
 
+  /* ✅ Daha güçlü arka plan parallax */
   bg.style.transform =
-    `translateY(${currentY*-25}px) translateX(${currentX*-15}px)`;
+    `translateY(${currentY*-45}px)
+     translateX(${currentX*-35}px)
+     scale(1.05)`;
+
+  /* ✅ Dinamik ışık efekti */
+  const lightX = 50 + currentX*30;
+  const lightY = 50 + currentY*30;
+
+  document.querySelector(".container").style.background =
+    `radial-gradient(circle at ${lightX}% ${lightY}%,
+     rgba(255,255,255,0.6),
+     rgba(255,255,255,0.35) 40%)`;
+
+  /* ✅ Butonlara yönlü shadow */
+  buttons.forEach(btn=>{
+    btn.style.boxShadow =
+      `${-currentX*20}px ${20 + currentY*20}px 40px rgba(0,0,0,0.25)`;
+  });
 
   requestAnimationFrame(animate);
 }
