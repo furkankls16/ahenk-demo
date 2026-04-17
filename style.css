@@ -52,18 +52,23 @@ body{
 }
 
 .logo-wrapper{
-  margin-bottom:25px;
+  margin-bottom:15px;        /* daha kompakt */
   transform-style:preserve-3d;
   transition:transform 0.1s ease-out;
+
+  height:130px;              /* logo için sabit yükseklik */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;           /* ✅ üst-alt boşluğu keser */
 }
 
-/* ✅ SVG responsive ve kırpılmaz */
+/* SVG ölçek */
 .logo-wrapper svg{
   width:240px;
   max-width:90%;
   height:auto;
-  display:block;
-  margin:0 auto;
+  transform:translateY(-25px); /* ✅ boşluğu ortalar */
 }
 
 .main-logo{
