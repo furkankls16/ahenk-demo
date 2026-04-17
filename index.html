@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Ahenk 3D</title>
+<title>Ahenk</title>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
 
 <style>
@@ -14,86 +14,92 @@
 }
 
 body{
-  height:100vh;
+  min-height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
   font-family:Arial, sans-serif;
-  overflow:hidden;
   perspective:1200px;
-  background:#111;
-  transition:background-position 0.2s ease-out;
+  overflow-x:hidden;
 }
 
-/* Gradient arka plan */
+/* ✅ Marka rengine sadık gradient */
 .background-layer{
   position:fixed;
-  width:120%;
-  height:120%;
-  top:-10%;
-  left:-10%;
-  background:linear-gradient(135deg,#1a1a1a,#2c3e50,#4b0082);
-  background-size:200% 200%;
+  inset:-10%;
+  background:linear-gradient(
+    135deg,
+    #d8ff9a,
+    #c3ff6f,
+    #aeea55
+  );
+  background-size:140% 140%;
   z-index:-1;
-  transition:transform 0.2s ease-out;
+  transition:transform 0.15s ease-out;
 }
 
 /* 3D sahne */
 .scene{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   transform-style:preserve-3d;
-  transition:transform 0.2s ease-out;
+  transition:transform 0.15s ease-out;
 }
 
-/* Ana panel */
+/* ✅ Responsive container */
 .container{
-  width:90%;
-  max-width:420px;
-  padding:30px;
-  border-radius:20px;
-  background:rgba(255,255,255,0.05);
-  backdrop-filter:blur(10px);
+  width:92%;
+  max-width:900px;
+  padding:40px 30px;
+  border-radius:24px;
+  background:rgba(255,255,255,0.25);
+  backdrop-filter:blur(8px);
   text-align:center;
   transform:translateZ(40px);
   box-shadow:
-    0 25px 50px rgba(0,0,0,0.4),
-    0 10px 20px rgba(0,0,0,0.3);
+    0 30px 60px rgba(0,0,0,0.25),
+    0 15px 30px rgba(0,0,0,0.15);
 }
 
 .logo{
-  width:120px;
+  width:140px;
   margin-bottom:20px;
   transform:translateZ(60px);
 }
 
 h1{
-  color:#fff;
-  margin-bottom:25px;
+  margin-bottom:30px;
   transform:translateZ(50px);
+}
+
+.menu{
+  display:grid;
+  gap:15px;
 }
 
 .menu a{
   display:block;
-  margin:12px 0;
-  padding:12px;
-  border-radius:12px;
+  padding:14px;
+  border-radius:14px;
   text-decoration:none;
-  color:#fff;
   font-weight:bold;
-  background:rgba(255,255,255,0.08);
+  color:#111;
+  background:rgba(255,255,255,0.5);
   transform:translateZ(45px);
   transition:all 0.2s ease;
-  box-shadow:0 8px 15px rgba(0,0,0,0.3);
+  box-shadow:0 10px 20px rgba(0,0,0,0.15);
 }
 
 .menu a:hover{
   transform:translateZ(55px);
-  box-shadow:0 12px 25px rgba(0,0,0,0.4);
+  box-shadow:0 15px 30px rgba(0,0,0,0.25);
 }
 
 .footer{
-  margin-top:20px;
-  font-size:13px;
-  color:#ccc;
+  margin-top:25px;
+  font-size:14px;
   transform:translateZ(30px);
 }
 </style>
@@ -132,33 +138,29 @@ let targetY = 0;
 let currentX = 0;
 let currentY = 0;
 
-/* Hareket algılama */
-function handleMove(x,y){
-  const centerX = window.innerWidth / 2;
-  const centerY = window.innerHeight / 2;
+function updatePosition(x,y){
+  const centerX = window.innerWidth/2;
+  const centerY = window.innerHeight/2;
 
-  targetX = (x - centerX) / centerX;
-  targetY = (y - centerY) / centerY;
+  targetX = (x-centerX)/centerX;
+  targetY = (y-centerY)/centerY;
 }
 
-/* Mouse */
-document.addEventListener("mousemove", e=>{
-  handleMove(e.clientX,e.clientY);
+document.addEventListener("mousemove",e=>{
+  updatePosition(e.clientX,e.clientY);
 });
 
-/* Touch */
-document.addEventListener("touchmove", e=>{
-  const touch = e.touches[0];
-  handleMove(touch.clientX,touch.clientY);
-});
+document.addEventListener("touchmove",e=>{
+  const t = e.touches[0];
+  updatePosition(t.clientX,t.clientY);
+},{passive:true});
 
-/* Yumuşak animasyon */
 function animate(){
-  currentX += (targetX - currentX) * 0.08;
-  currentY += (targetY - currentY) * 0.08;
+  currentX += (targetX-currentX)*0.07;
+  currentY += (targetY-currentY)*0.07;
 
-  const rotateX = currentY * 4;   // max 4 derece
-  const rotateY = currentX * -4;
+  const rotateX = currentY*3; 
+  const rotateY = currentX*-3;
 
   scene.style.transform = `
     rotateX(${rotateX}deg)
@@ -166,8 +168,8 @@ function animate(){
   `;
 
   background.style.transform = `
-    translateX(${currentX * -30}px)
-    translateY(${currentY * -30}px)
+    translateX(${currentX*-20}px)
+    translateY(${currentY*-20}px)
   `;
 
   requestAnimationFrame(animate);
