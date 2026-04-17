@@ -15,18 +15,27 @@
   <div class="card-wrapper" id="wrapper">
     <div class="container">
 
-      <!-- ✅ ORİJİNAL ORANLI 3D LOGO -->
-      <div class="logo-3d">
-        <div class="logo-symbol">
-          <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-            <path fill="#000000"
-              d="M 51.05 101.52 C 70.05 97.07 53.23 76.23 57.12 61.89 
-                 C 61 47.56 96.55 40.94 83.11 20.75 
-                 C 74.23 7.39 3.02 23.02 14.13 60.39 
-                 C 25.23 97.75 51.05 101.52 51.05 101.52 Z"/>
-          </svg>
-        </div>
-        <div class="logo-text">ahenk</div>
+      <!-- ✅ TEK SVG LOGO (Orijinal Oran) -->
+      <div class="logo-wrapper">
+        <svg class="main-logo" viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg">
+          
+          <!-- Sembol -->
+          <path fill="#000000"
+            d="M 51.05 101.52 C 70.05 97.07 53.23 76.23 57.12 61.89 
+               C 61 47.56 96.55 40.94 83.11 20.75 
+               C 74.23 7.39 3.02 23.02 14.13 60.39 
+               C 25.23 97.75 51.05 101.52 51.05 101.52 Z"/>
+
+          <!-- Yazı -->
+          <text x="100" y="75"
+            font-size="48"
+            font-weight="700"
+            font-family="Arial, sans-serif"
+            fill="#000000">
+            ahenk
+          </text>
+
+        </svg>
       </div>
 
       <h1>Bize Ulaşın</h1>
@@ -52,8 +61,7 @@
 <script>
 const wrapper = document.getElementById("wrapper");
 const background = document.querySelector(".background-layer");
-const logoSymbol = document.querySelector(".logo-symbol");
-const logoText = document.querySelector(".logo-text");
+const logo = document.querySelector(".main-logo");
 
 let currentX=0,currentY=0,targetX=0,targetY=0;
 
@@ -106,15 +114,11 @@ function animate(){
     translateY(${currentY*-25}px)
   `;
 
-  /* ✅ Logo dengeli depth */
-  logoSymbol.style.transform = `
-    translateZ(60px)
+  // ✅ Logo tek blok olarak 3D
+  logo.style.transform = `
+    translateZ(70px)
     rotateX(${rotateX*1.05}deg)
-  `;
-
-  logoText.style.transform = `
-    translateZ(55px)
-    rotateX(${rotateX*0.95}deg)
+    rotateY(${rotateY*1.05}deg)
   `;
 
   requestAnimationFrame(animate);
