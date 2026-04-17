@@ -84,22 +84,36 @@ h1{
   font-weight:bold;
   color:#111;
 
-  background:rgba(255,255,255,0.7);
+  background:rgba(255,255,255,0.72);
   backdrop-filter:blur(12px);
   border:1px solid rgba(255,255,255,0.4);
 
   box-shadow:
-    0 15px 30px rgba(0,0,0,0.2),
+    0 12px 25px rgba(0,0,0,0.18),
     inset 0 1px 0 rgba(255,255,255,0.7);
 
-  transition:all 0.25s ease;
+  transition:
+    transform 0.25s cubic-bezier(.2,.6,.2,1),
+    box-shadow 0.25s cubic-bezier(.2,.6,.2,1),
+    background 0.25s ease;
+
+  will-change:transform;
 }
 
 .menu a:hover{
-  transform:translateY(-6px);
+  transform:translateY(-5px);
+
   box-shadow:
-    0 30px 60px rgba(0,0,0,0.3),
+    0 20px 40px rgba(0,0,0,0.22),
     inset 0 1px 0 rgba(255,255,255,0.9);
+}
+
+.menu a:active{
+  transform:translateY(-2px) scale(0.98);
+
+  box-shadow:
+    0 8px 18px rgba(0,0,0,0.18),
+    inset 0 2px 4px rgba(0,0,0,0.15);
 }
 
 .footer{
