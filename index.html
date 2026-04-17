@@ -20,25 +20,19 @@ body{
   justify-content:center;
   font-family:Arial, sans-serif;
   background:#c3ff6f;
-  perspective:1400px;
-  overflow:hidden; /* ✅ taşmayı tamamen engeller */
+  perspective:1500px;
+  overflow:hidden;
 }
 
-/* Gradient marka tonları */
+/* Marka tonlu gradient */
 .background-layer{
   position:fixed;
   inset:-5%;
-  background:linear-gradient(
-    135deg,
-    #d8ff9a,
-    #c3ff6f,
-    #aeea55
-  );
+  background:linear-gradient(135deg,#d8ff9a,#c3ff6f,#aeea55);
   z-index:-1;
   transition:transform 0.1s ease-out;
 }
 
-/* 3D sahne */
 .scene{
   width:100%;
   display:flex;
@@ -46,17 +40,15 @@ body{
   justify-content:center;
 }
 
-/* ✅ rotate edilen katman */
 .card-wrapper{
   width:100%;
   display:flex;
   align-items:center;
   justify-content:center;
   transform-style:preserve-3d;
-  transition:transform 0.1s ease-out;
+  transition:transform 0.12s ease-out;
 }
 
-/* ✅ sabit kart */
 .container{
   width:92%;
   max-width:850px;
@@ -66,8 +58,8 @@ body{
   backdrop-filter:blur(6px);
   text-align:center;
   box-shadow:
-    0 30px 60px rgba(0,0,0,0.25),
-    0 15px 30px rgba(0,0,0,0.15);
+    0 35px 70px rgba(0,0,0,0.25),
+    0 20px 40px rgba(0,0,0,0.15);
 }
 
 .logo{
@@ -104,7 +96,7 @@ h1{
   font-size:14px;
 }
 
-/* ✅ Mobil hafif küçültme */
+/* Mobil hafif küçültme */
 @media (max-width:768px){
   .container{
     transform:scale(0.95);
@@ -148,27 +140,36 @@ const background = document.querySelector(".background-layer");
 
 let currentX=0,currentY=0,targetX=0,targetY=0;
 
-const maxRotate = 3; // ✅ mobil dahil 3 derece
-
-function clamp(value,limit){
-  return Math.max(Math.min(value,limit),-limit);
-}
+const isMobile = window.innerWidth <= 768;
+const maxRotate = 4; // ✅ Eski güçlü his geri geldi
 
 function update(x,y){
   const centerX = window.innerWidth/2;
   const centerY = window.innerHeight/2;
 
-  targetX = clamp((x-centerX)/centerX,-1,1);
-  targetY = clamp((y-centerY)/centerY,-1,1);
+  let percentX = (x-centerX)/centerX;
+  let percentY = (y-centerY)/centerY;
+
+  if(isMobile){
+    targetX = 0;               // ✅ Mobilde sağ-sol kapalı
+    targetY = percentY;
+  } else {
+    targetX = percentX;
+    targetY = percentY;
+  }
 }
 
 document.addEventListener("mousemove",e=>{
-  update(e.clientX,e.clientY);
+  if(!isMobile){
+    update(e.clientX,e.clientY);
+  }
 });
 
 document.addEventListener("touchmove",e=>{
-  const t=e.touches[0];
-  update(t.clientX,t.clientY);
+  if(isMobile){
+    const t=e.touches[0];
+    update(t.clientX,t.clientY);
+  }
 },{passive:true});
 
 function animate(){
@@ -184,8 +185,7 @@ function animate(){
   `;
 
   background.style.transform = `
-    translateX(${currentX*-10}px)
-    translateY(${currentY*-10}px)
+    translateY(${currentY*-12}px)
   `;
 
   requestAnimationFrame(animate);
