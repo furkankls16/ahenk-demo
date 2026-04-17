@@ -60,34 +60,35 @@ function update(x,y){
   targetY = py;
 }
 
-document.addEventListener("mousemove",e=>{
-  if(!isMobile) update(e.clientX,e.clientY);
-});
-
-document.addEventListener("touchmove",e=>{
-  if(isMobile){
+if(isMobile){
+  document.addEventListener("touchmove",e=>{
     const t=e.touches[0];
     update(t.clientX,t.clientY);
-  }
-},{passive:true});
+  },{passive:true});
+} else {
+  document.addEventListener("mousemove",e=>{
+    update(e.clientX,e.clientY);
+  });
+}
 
 function animate(){
 
-  currentX += (targetX-currentX)*0.08;
-  currentY += (targetY-currentY)*0.08;
+  currentX += (targetX-currentX)*0.06;
+  currentY += (targetY-currentY)*0.06;
 
-  const maxTilt = isMobile ? 11 : 8;
+  /* ✅ Masaüstünde daha düşük tilt */
+  const maxTilt = isMobile ? 11 : 4;
 
   const rotX = currentY*maxTilt;
-  const rotY = currentX*-8;
+  const rotY = currentX*-maxTilt;
 
   scene.style.transform =
     `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
 
   bg.style.transform =
-    `translateY(${currentY*-40}px)
-     translateX(${currentX*-25}px)
-     scale(1.05)`;
+    `translateY(${currentY*-30}px)
+     translateX(${currentX*-20}px)
+     scale(1.04)`;
 
   requestAnimationFrame(animate);
 }
