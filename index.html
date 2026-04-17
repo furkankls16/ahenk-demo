@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ahenk</title>
-  <link rel="stylesheet" href="style.css"/>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ahenk</title>
+<link rel="stylesheet" href="style.css"/>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
 </head>
 <body>
 
@@ -15,13 +15,30 @@
   <div class="card-wrapper" id="wrapper">
     <div class="container">
 
-      <!-- ✅ ORİJİNAL SVG AYNEN -->
+      <!-- ✅ ORİJİNAL LOGO GÖMÜLÜ SVG -->
       <div class="logo-wrapper" id="logoWrapper">
-        <!-- Senin SVG'in hiçbir değişiklik yapılmadan -->
-        <!-- Buraya Canva'dan indirdiğin orijinal SVG kodunu aynen yapıştır -->
-        
-        <!-- Örnek placeholder -->
-        <img src="logo.svg" alt="Ahenk Logo" class="main-logo">
+
+<svg class="main-logo"
+     viewBox="0 0 240 120"
+     xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Sembol -->
+  <path fill="#000000"
+    d="M 51.05 101.52 C 70.05 97.07 53.23 76.23 57.12 61.89 
+       C 61 47.56 96.55 40.94 83.11 20.75 
+       C 74.23 7.39 3.02 23.02 14.13 60.39 
+       C 25.23 97.75 51.05 101.52 51.05 101.52 Z"/>
+
+  <!-- Yazı -->
+  <text x="100" y="75"
+        font-size="48"
+        font-weight="700"
+        font-family="Arial, sans-serif"
+        fill="#000000">
+    ahenk
+  </text>
+
+</svg>
 
       </div>
 
@@ -101,10 +118,8 @@ function animate(){
     translateY(${currentY*-25}px)
   `;
 
-  // ✅ Logo sadece hafif daha önde
-  logoWrapper.style.transform = `
-    translateZ(80px)
-  `;
+  // ✅ Logo oran bozulmadan sadece öne çıkıyor
+  logoWrapper.style.transform = `translateZ(80px)`;
 
   requestAnimationFrame(animate);
 }
