@@ -15,7 +15,7 @@
   <div class="card-wrapper" id="wrapper">
     <div class="container">
 
-      <!-- ✅ 3D LOGO -->
+      <!-- ✅ ORİJİNAL ORANLI 3D LOGO -->
       <div class="logo-3d">
         <div class="logo-symbol">
           <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
@@ -106,15 +106,15 @@ function animate(){
     translateY(${currentY*-25}px)
   `;
 
-  // ✅ Logo depth farkı
+  /* ✅ Logo dengeli depth */
   logoSymbol.style.transform = `
-    translateZ(90px)
-    rotateX(${rotateX*1.2}deg)
+    translateZ(60px)
+    rotateX(${rotateX*1.05}deg)
   `;
 
   logoText.style.transform = `
-    translateZ(60px)
-    rotateX(${rotateX*0.6}deg)
+    translateZ(55px)
+    rotateX(${rotateX*0.95}deg)
   `;
 
   requestAnimationFrame(animate);
