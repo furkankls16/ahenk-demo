@@ -58,7 +58,7 @@ body{
 }
 
 .main-logo{
-  width:220px;     /* ✅ sadece ölçek */
+  width:220px;
   max-width:80%;
   height:auto;
   display:block;
