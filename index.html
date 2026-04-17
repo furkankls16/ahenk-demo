@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Ahenk</title>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
@@ -19,97 +19,99 @@ body{
   align-items:center;
   justify-content:center;
   font-family:Arial, sans-serif;
-  perspective:1200px;
-  overflow-x:hidden;
+  background:#c3ff6f;
+  perspective:1400px;
+  overflow:hidden; /* ✅ taşmayı tamamen engeller */
 }
 
-/* ✅ Marka renkli gradient */
+/* Gradient marka tonları */
 .background-layer{
   position:fixed;
-  inset:-10%;
-  background:linear-gradient(135deg,#d8ff9a,#c3ff6f,#aeea55);
-  background-size:140% 140%;
+  inset:-5%;
+  background:linear-gradient(
+    135deg,
+    #d8ff9a,
+    #c3ff6f,
+    #aeea55
+  );
   z-index:-1;
-  transition:transform 0.15s ease-out;
+  transition:transform 0.1s ease-out;
 }
 
-/* Sahne */
+/* 3D sahne */
 .scene{
   width:100%;
   display:flex;
   align-items:center;
   justify-content:center;
-  transform-style:preserve-3d;
 }
 
-/* Ana panel */
+/* ✅ rotate edilen katman */
+.card-wrapper{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transform-style:preserve-3d;
+  transition:transform 0.1s ease-out;
+}
+
+/* ✅ sabit kart */
 .container{
   width:92%;
-  max-width:900px;
-  padding:40px 30px;
+  max-width:850px;
+  padding:35px 25px;
   border-radius:24px;
-  background:rgba(255,255,255,0.25);
-  backdrop-filter:blur(8px);
+  background:rgba(255,255,255,0.35);
+  backdrop-filter:blur(6px);
   text-align:center;
-  transform:translateZ(40px);
   box-shadow:
     0 30px 60px rgba(0,0,0,0.25),
     0 15px 30px rgba(0,0,0,0.15);
-  transition:transform 0.15s ease-out;
 }
 
 .logo{
-  width:140px;
+  width:130px;
   margin-bottom:20px;
 }
 
 h1{
-  margin-bottom:30px;
+  margin-bottom:25px;
 }
 
 .menu{
   display:grid;
-  gap:15px;
+  gap:14px;
 }
 
 .menu a{
-  display:block;
   padding:14px;
   border-radius:14px;
   text-decoration:none;
   font-weight:bold;
   color:#111;
-  background:rgba(255,255,255,0.5);
+  background:rgba(255,255,255,0.6);
   transition:all 0.2s ease;
   box-shadow:0 10px 20px rgba(0,0,0,0.15);
 }
 
 .menu a:hover{
   transform:translateY(-2px);
-  box-shadow:0 15px 30px rgba(0,0,0,0.25);
 }
 
 .footer{
-  margin-top:25px;
+  margin-top:20px;
   font-size:14px;
 }
 
-/* ✅ Mobil optimizasyon */
+/* ✅ Mobil hafif küçültme */
 @media (max-width:768px){
-
   .container{
-    padding:30px 20px;
-    transform:translateZ(40px) scale(0.96);
+    transform:scale(0.95);
   }
-
   .logo{
     width:110px;
   }
-
-  h1{
-    font-size:20px;
-  }
-
 }
 </style>
 </head>
@@ -118,73 +120,72 @@ h1{
 <div class="background-layer"></div>
 
 <div class="scene">
-  <div class="container" id="card">
-    <img src="https://i.hizliresim.com/ar1wgl8.png" class="logo" />
-    <h1>Bize Ulaşın</h1>
+  <div class="card-wrapper" id="wrapper">
+    <div class="container">
+      <img src="https://i.hizliresim.com/ar1wgl8.png" class="logo"/>
+      <h1>Bize Ulaşın</h1>
 
-    <div class="menu">
-      <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
-      <a href="#"><i class="fas fa-map-marker-alt"></i> Mağazamız</a>
-      <a href="#"><i class="fas fa-star"></i> Bizi Puanla</a>
-      <a href="#">AHENK</a>
-      <a href="#">DONAT</a>
-      <a href="#">✆ Whatsapp ➀</a>
-      <a href="#">✆ Whatsapp ➁</a>
-    </div>
+      <div class="menu">
+        <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="#"><i class="fas fa-map-marker-alt"></i> Mağazamız</a>
+        <a href="#"><i class="fas fa-star"></i> Bizi Puanla</a>
+        <a href="#">AHENK</a>
+        <a href="#">DONAT</a>
+        <a href="#">✆ Whatsapp ➀</a>
+        <a href="#">✆ Whatsapp ➁</a>
+      </div>
 
-    <div class="footer">
-      © 2025 Ahenk
+      <div class="footer">
+        © 2025 Ahenk
+      </div>
     </div>
   </div>
 </div>
 
 <script>
-const card = document.getElementById("card");
+const wrapper = document.getElementById("wrapper");
 const background = document.querySelector(".background-layer");
 
-let targetX = 0;
-let targetY = 0;
-let currentX = 0;
-let currentY = 0;
+let currentX=0,currentY=0,targetX=0,targetY=0;
 
-const isMobile = window.innerWidth <= 768;
-const maxRotate = isMobile ? 2 : 3; // ✅ Mobilde daha düşük
+const maxRotate = 3; // ✅ mobil dahil 3 derece
 
-function updatePosition(x,y){
-  const rect = card.getBoundingClientRect();
-  const centerX = rect.left + rect.width/2;
-  const centerY = rect.top + rect.height/2;
+function clamp(value,limit){
+  return Math.max(Math.min(value,limit),-limit);
+}
 
-  targetX = (x-centerX)/rect.width;
-  targetY = (y-centerY)/rect.height;
+function update(x,y){
+  const centerX = window.innerWidth/2;
+  const centerY = window.innerHeight/2;
+
+  targetX = clamp((x-centerX)/centerX,-1,1);
+  targetY = clamp((y-centerY)/centerY,-1,1);
 }
 
 document.addEventListener("mousemove",e=>{
-  updatePosition(e.clientX,e.clientY);
+  update(e.clientX,e.clientY);
 });
 
 document.addEventListener("touchmove",e=>{
-  const t = e.touches[0];
-  updatePosition(t.clientX,t.clientY);
+  const t=e.touches[0];
+  update(t.clientX,t.clientY);
 },{passive:true});
 
 function animate(){
   currentX += (targetX-currentX)*0.08;
   currentY += (targetY-currentY)*0.08;
 
-  const rotateX = currentY * maxRotate;
-  const rotateY = currentX * -maxRotate;
+  const rotateX = currentY*maxRotate;
+  const rotateY = currentX*-maxRotate;
 
-  card.style.transform = `
-    translateZ(40px)
-    ${isMobile ? "scale(0.96)" : ""}
+  wrapper.style.transform = `
     rotateX(${rotateX}deg)
     rotateY(${rotateY}deg)
   `;
 
   background.style.transform = `
-    translateX(${currentX*-15}px)
-    translateY(${currentY*-15}px)
+    translateX(${currentX*-10}px)
+    translateY(${currentY*-10}px)
   `;
 
   requestAnimationFrame(animate);
