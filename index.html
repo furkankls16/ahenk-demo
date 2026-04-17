@@ -48,7 +48,6 @@ let targetX=0,targetY=0,currentX=0,currentY=0;
 
 const isMobile = window.innerWidth <= 768;
 
-/* ✅ Mouse / Touch Input */
 function update(x,y){
   const cx = window.innerWidth/2;
   const cy = window.innerHeight/2;
@@ -71,24 +70,36 @@ if(isMobile){
   });
 }
 
-/* ✅ Animation Loop */
 function animate(){
 
   currentX += (targetX-currentX)*0.06;
   currentY += (targetY-currentY)*0.06;
 
-  const maxTilt = isMobile ? 11 : 4;
+  if(isMobile){
 
-  const rotX = currentY*maxTilt;
-  const rotY = currentX*-maxTilt;
+    /* ✅ Mobil gerçek tilt */
+    const rotX = currentY*11;
+    const rotY = currentX*-8;
 
-  scene.style.transform =
-    `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+    scene.style.transform =
+      `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
 
-  bg.style.transform =
-    `translateY(${currentY*-30}px)
-     translateX(${currentX*-20}px)
-     scale(1.04)`;
+    bg.style.transform =
+      `translateY(${currentY*-35}px)
+       translateX(${currentX*-25}px)
+       scale(1.05)`;
+
+  } else {
+
+    /* ✅ Masaüstü: inner-scene dönmez */
+    scene.style.transform = `rotateX(0deg) rotateY(0deg)`;
+
+    /* ✅ Sadece arka plan hareket eder */
+    bg.style.transform =
+      `translateY(${currentY*-25}px)
+       translateX(${currentX*-20}px)
+       scale(1.03)`;
+  }
 
   requestAnimationFrame(animate);
 }
