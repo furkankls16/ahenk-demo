@@ -13,18 +13,21 @@
   box-sizing:border-box;
 }
 
+html,body{
+  height:100%;
+  overflow-x:hidden; /* ✅ Yatay taşma tamamen kapalı */
+}
+
 body{
-  min-height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
   font-family:Arial, sans-serif;
   background:#c3ff6f;
-  perspective:1800px; /* ✅ Daha güçlü derinlik */
-  overflow:hidden;
+  perspective:2200px; /* ✅ Daha güçlü 3D */
 }
 
-/* Marka gradient */
+/* Gradient */
 .background-layer{
   position:fixed;
   inset:-5%;
@@ -34,22 +37,20 @@ body{
 }
 
 .scene{
-  width:100%;
   display:flex;
   align-items:center;
   justify-content:center;
 }
 
+/* ✅ Wrapper artık içerik kadar geniş */
 .card-wrapper{
-  width:100%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display:inline-block;
   transform-style:preserve-3d;
+  will-change:transform;
 }
 
 .container{
-  width:92%;
+  width:92vw;
   max-width:850px;
   padding:35px 25px;
   border-radius:24px;
@@ -57,8 +58,8 @@ body{
   backdrop-filter:blur(6px);
   text-align:center;
   box-shadow:
-    0 45px 80px rgba(0,0,0,0.25),
-    0 25px 45px rgba(0,0,0,0.18);
+    0 60px 120px rgba(0,0,0,0.25),
+    0 30px 60px rgba(0,0,0,0.2);
   transform-origin:center center;
 }
 
@@ -84,11 +85,11 @@ h1{
   color:#111;
   background:rgba(255,255,255,0.6);
   transition:all 0.2s ease;
-  box-shadow:0 10px 20px rgba(0,0,0,0.15);
+  box-shadow:0 12px 25px rgba(0,0,0,0.18);
 }
 
 .menu a:hover{
-  transform:translateY(-2px);
+  transform:translateY(-3px);
 }
 
 .footer{
@@ -96,13 +97,10 @@ h1{
   font-size:14px;
 }
 
-/* Mobil hafif küçültme */
+/* Mobil hafif scale */
 @media (max-width:768px){
   .container{
-    transform:scale(0.95);
-  }
-  .logo{
-    width:110px;
+    transform:scale(0.94);
   }
 }
 </style>
@@ -142,8 +140,8 @@ let currentY=0,targetY=0;
 let currentX=0,targetX=0;
 
 const isMobile = window.innerWidth <= 768;
-const maxRotateDesktop = 6;   // ✅ Daha hissedilir
-const maxRotateMobile  = 6;   // ✅ Mobilde de güçlü
+const maxRotateDesktop = 8;  // ✅ Çok daha hissedilir
+const maxRotateMobile  = 8;  // ✅ Mobilde güçlü
 
 function update(x,y){
   const centerX = window.innerWidth/2;
@@ -153,7 +151,7 @@ function update(x,y){
   const percentY = (y-centerY)/centerY;
 
   if(isMobile){
-    targetX = 0;          // ✅ SAĞ-SOL TAM KAPALI
+    targetX = 0;            // ✅ YATAY TAM KAPALI
     targetY = percentY;
   } else {
     targetX = percentX;
@@ -175,8 +173,8 @@ document.addEventListener("touchmove",e=>{
 },{passive:true});
 
 function animate(){
-  currentX += (targetX-currentX)*0.1;
-  currentY += (targetY-currentY)*0.1;
+  currentX += (targetX-currentX)*0.12;
+  currentY += (targetY-currentY)*0.12;
 
   const rotateX = currentY*(isMobile?maxRotateMobile:maxRotateDesktop);
   const rotateY = isMobile ? 0 : currentX*-maxRotateDesktop;
@@ -187,7 +185,7 @@ function animate(){
   `;
 
   background.style.transform = `
-    translateY(${currentY*-18}px)
+    translateY(${currentY*-25}px)
   `;
 
   requestAnimationFrame(animate);
