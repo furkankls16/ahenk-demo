@@ -57,6 +57,15 @@ body{
   transition:transform 0.1s ease-out;
 }
 
+/* ✅ SVG responsive ve kırpılmaz */
+.logo-wrapper svg{
+  width:240px;
+  max-width:90%;
+  height:auto;
+  display:block;
+  margin:0 auto;
+}
+
 .main-logo{
   width:240px;   /* sadece ölçek */
   max-width:85%;
